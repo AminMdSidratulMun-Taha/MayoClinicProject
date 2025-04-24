@@ -26,12 +26,20 @@ function displayForm(status) {
     // Additional elements for sign up
     if (status === SIGN_UP) {
         var nameInput = createInput('text', true, 'First Name', 'fName');
+        var lastNameInput = createInput('text', true, 'Last Name', 'lName');
 
         // Non-Required : can be configured in account page
-        var lastNameInput = createInput('text', false, 'Last Name', 'lName');
+        var middleNameInput = createInput('text', false, 'Middle Name', 'mName');
         var heightFeetInput = createInput('number', false, 'Height (Feet)', 'hFeet');
         var heightInchesInput = createInput('number', false, 'Height (Inches)', 'hInch');
         var weightInput = createInput('number', false, 'Weight (lbs)', 'weight');
+
+        //Adding constraints
+        heightFeetInput.min = 0;
+        heightFeetInput.max = 7;
+        heightInchesInput.min = 0;
+        heightInchesInput.max = 11;
+        weightInput.min = 0;
     }
 
     let submitBtn = document.createElement('input');
@@ -58,6 +66,7 @@ function displayForm(status) {
     if (status === SIGN_UP) {
         form.appendChild(nameInput);
         form.appendChild(lastNameInput);
+        form.appendChild(middleNameInput);
         form.appendChild(heightFeetInput);
         form.appendChild(heightInchesInput);
         form.appendChild(weightInput);  
